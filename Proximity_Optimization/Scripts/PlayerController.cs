@@ -12,7 +12,7 @@ public partial class PlayerController : CharacterBody3D
 
 	// Jump logic variables
 	private bool isGrounded = false;
-	private float jumpForce = 10.0f;
+	private float jumpForce = 7.0f;
 	private RayCast3D groundCheck;
 
 	// Camera system variables
