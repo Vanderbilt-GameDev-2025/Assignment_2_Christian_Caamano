@@ -34,6 +34,8 @@ Compilation instructions are for MacOS devices.
 To run the demo, perform the following steps:
 1. Clone this repository to your device.
 2. In a new terminal, cd to the root directory of the repository (Assignment_2_Christian_Caamano).
-3. Run the command "scons platform=macos".
-4. Open Godot, click "Import" and open the folder named "Proximity_Optimization".
-5. Open this project in the editor and click play. Use WASD to move, spacebar to jump, and mouse to look around.
+3. Run the command "git clone -b 4.3 https://github.com/godotengine/godot-cpp".
+4. Cd into "godot-cpp" and run the command "git submodule update --init"
+5. Cd back to "Assignment_2_Christian_Caamano" and run the command "scons platform=macos".
+6. Open Godot, click "Import" and open the folder named "Proximity_Optimization".
+7. Open this project in the editor and click play. Use WASD to move, spacebar to jump, and mouse to look around.
