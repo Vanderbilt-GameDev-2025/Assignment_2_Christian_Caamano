@@ -1,6 +1,6 @@
 # Proximity-based optimization using GDExtension
 
-![Picture of the demo scene.](gameplay_thumbnail.png)
+![Picture of the demo scene.](demo_thumbnail.png)
 
 Author: Christian Caamano
 
