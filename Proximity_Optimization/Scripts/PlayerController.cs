@@ -60,6 +60,7 @@ public partial class PlayerController : CharacterBody3D
 	{
 		Vector3 newVel = Velocity;
 		
+		// Jump logic
 		if (!IsOnFloor())
 		{
 			newVel.Y -= gravity * (float)delta;
@@ -69,7 +70,7 @@ public partial class PlayerController : CharacterBody3D
             newVel.Y = jumpForce;
         }
 
-		// Generate movement right, left, back, or forward based on user input.
+		// Calculate movement right, left, back, or forward based on user input.
 		// See project Input Map settings for keyboard mappings.
 		Vector3 input = Vector3.Zero;
 		input.X = Input.GetAxis("move_left", "move_right");
@@ -77,7 +78,6 @@ public partial class PlayerController : CharacterBody3D
 
 		Vector3 direction = twistPivot.Basis * input;
 
-		// Handle movement
         if (direction != Vector3.Zero)
         {
             newVel.X = direction.X * movementSpeed;
@@ -89,41 +89,15 @@ public partial class PlayerController : CharacterBody3D
             newVel.Z = Mathf.MoveToward(Velocity.Z, 0, movementSpeed);
         }
 
+		// Apply movement.
 		Velocity = newVel;
 		MoveAndSlide();
 	}
 
-	public override void _Input(InputEvent @event)
-    {
-        if (@event.IsActionPressed("interact"))
-        {
-			if (interactionRay.IsColliding())
-            {
-                Node3D colliderNode = (Node3D)interactionRay.GetCollider();
-				if (colliderNode is StaticBody3D)
-				{
-					Node3D parentObject = colliderNode.GetParentNode3D(); 
-
-					// // Interacting with lever
-					// if (parentObject is Lever lever)
-					// {
-					// 	lever.Toggle();
-					// }
-
-					// // Interacting with keypad button
-					// if (parentObject is KeypadButton button)
-					// {
-					// 	GD.Print("Interacting with keypad button!");
-					// 	button.Press();
-					// }
-				}
-            }
-        }
-    }
-
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event is InputEventMouseMotion mouseMotion)
+        // Player looking around with the mouse
+		if (@event is InputEventMouseMotion mouseMotion)
 		{
 			if (Input.MouseMode == Input.MouseModeEnum.Captured)
 			{
